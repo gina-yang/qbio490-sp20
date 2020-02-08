@@ -4,5 +4,7 @@ names <-as.vector(unlist(names)) # convert from list to character vector
 for( i in 1:length(names) ){
   names[i] <- strsplit(names[i], "_")[[1]][2] # split by underscore
 }
-allcells[1]<-list(names) # replace the rownames
-write.csv(allcells, "test1.csv", row.names = FALSE) # write out to file
+allcells[1]<-list(names) # replace the rownames with gene names
+
+write.table(allcells, "genenames.txt", row.names = FALSE, quote = FALSE) # write to text file
+# write.table(allcells, "genenames.csv", row.names = FALSE) # write to csv
