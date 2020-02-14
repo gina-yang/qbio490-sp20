@@ -6,5 +6,5 @@ for( i in 1:length(names) ){
 }
 allcells[1]<-list(names) # replace the rownames with gene names
 
-write.table(allcells, "genenames.txt", row.names = FALSE, quote = FALSE) # write to text file
+write.table(allcells, "Li_CRC.txt", row.names = FALSE, quote = FALSE) # write to text file
 # write.table(allcells, "genenames.csv", row.names = FALSE) # write to csv

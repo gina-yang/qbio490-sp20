@@ -10,7 +10,7 @@
 % save cluster labels to sigfolder
 resfolder = 'Results';
 sigfolder = [resfolder '/Signaling'];
-dlmwrite('Data/Joost_cluster_labels.txt', cluster_label)
+dlmwrite('Data/Li_cluster_labels.txt', cluster_label)
 
 
 % Run each section separately or run them all 
