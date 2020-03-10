@@ -8,7 +8,7 @@
 
 %% Setup  
 % save cluster labels to sigfolder
-resfolder = 'Results';
+resfolder = 'Results/20200228';
 sigfolder = [resfolder '/Signaling'];
 dlmwrite('Data/Li_cluster_labels.txt', cluster_label)
 
@@ -17,10 +17,10 @@ dlmwrite('Data/Li_cluster_labels.txt', cluster_label)
 %% Tgfb: ligand-receptor pairs and their target genes
 Lig = {{'TGFB1'},{'TGFB1'},{'TGFB2'},{'TGFB2'}};
 Rec = {{'TGFBR1'},{'TGFBR2'},{'TGFBR1'},{'TGFBR2'}};
-Target = {{'ZEB2','SMAD2','WNT4','WNT11','BMP7','SOX9','NOTCH1'},...
-          {'ZEB2','SMAD2','WNT4','WNT11','BMP7','SOX9','NOTCH1'},...
-          {'ZEB2','SMAD2','WNT4','WNT11','BMP7','SOX9','NOTCH1'},...
-          {'ZEB2','SMAD2','WNT4','WNT11','BMP7','SOX9','NOTCH1'}};
+Target = {{'MYC','SMAD6','BMP5','MMP3','IL11','SMAD2'},...
+          {'MYC','SMAD6','BMP5','MMP3','IL11','SMAD2'},...
+          {'MYC','SMAD6','BMP5','MMP3','IL11','SMAD2'},...
+          {'MYC','SMAD6','BMP5','MMP3','IL11','SMAD2'}};
 
 % Computing cell-cell interaction probability for given ligand-receptor pairs
 [Pidv, Pall] = LR_Interaction(data, allgenes, Lig, Rec, Target);
@@ -64,7 +64,7 @@ Target = {{'CTNNB1','LGR5','RUNX1','APC','MMP7','DKK1','CCND1'},...
 
 
 %%
-threshold = 0.1;
+threshold = 0.0;
 
 plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,sigfolder)
 
@@ -87,17 +87,17 @@ close all;
 %% Bmp: ligand-receptor pairs and their target genes
 Lig = {{'BMP1'},{'BMP2'},{'BMP4'},{'BMP7'}};
 Rec = {{'BMPR2'},{'BMPR2'},{'BMPR2'},{'BMPR2'}};
-Target = {{'CREBBP','FOS','ID1','JUN','RUNX1','SMAD1','SMAD5','SOX4','CDH1'}, ...
-          {'CREBBP','FOS','ID1','JUN','RUNX1','SMAD1','SMAD5','SOX4','CDH1'}, ...
-          {'CREBBP','FOS','ID1','JUN','RUNX1','SMAD1','SMAD5','SOX4','CDH1'}, ...
-          {'CREBBP','FOS','ID1','JUN','RUNX1','SMAD1','SMAD5','SOX4','CDH1'}};
+Target = {{'CREBBP','FOS','ID1','JUN','RUNX1','SMAD1','SMAD5','CDH1'}, ...
+          {'CREBBP','FOS','ID1','JUN','RUNX1','SMAD1','SMAD5','CDH1'}, ...
+          {'CREBBP','FOS','ID1','JUN','RUNX1','SMAD1','SMAD5','CDH1'}, ...
+          {'CREBBP','FOS','ID1','JUN','RUNX1','SMAD1','SMAD5','CDH1'}};
 
 % Computing cell-cell interaction probability for given ligand-receptor pairs
 [Pidv, Pall] = LR_Interaction(data, allgenes, Lig, Rec, Target);
 
 
 %%
-threshold = 0.03;
+threshold = 0.013493;
 
 plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,sigfolder)
 
@@ -109,4 +109,4 @@ for i = 1:size(Pidv,1)
     dlmwrite([sigfolder '/P_' Lig{i}{1} '_' Rec{i}{1} '.txt'], Pidv{i}, 'delimiter','\t')
 end
 
-%close all;
+close all;

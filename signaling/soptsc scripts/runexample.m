@@ -36,8 +36,8 @@ allgenes = Data_all.textdata(2:end,1);
 data = log10(data_matrix +1);
 
 %% Step 1: Run SoptSC to identify clusters and subpopulation composition
-resfolder = 'Results';     % all results are saved here
-NC = [];    % NC is the number of clusters: can be specified by user, or
+resfolder = 'Results/20200228';     % all results are saved here
+NC = [8];    % NC is the number of clusters: can be specified by user, or
             % if not given (NC = []), it will be inferred
 No_cells = size(data,2);
 No_exc_cell = 0.03*No_cells;
@@ -54,21 +54,27 @@ No_features = 3000;
 % plot_eigengap(eigenvalues,resfolder);
 % 
 % 
-% %% Plot cluster on 2-dimensional space
-% method = 'tsne';        % set method as 'pca' or 'tsne'
-% latent = plot_cluster(W,cluster_label,No_cluster,method,resfolder);
-% 
-% 
-% 
-% %% Identification of marker genes and plots gene-cell heatmap of topn markers
-% topn = 10;
-% Gene_idx = GC_htmp_DE(data,allgenes,cluster_label,topn,resfolder);
-% 
-% %% Plot gene expression on the low-dimensional projection of cells
-% Marker = {'Krt14','Mt2','Krt10','Ptgs1','Lor','Flg2'};
-% plot_marker(data,Marker,allgenes,latent,resfolder)
-% 
-% 
+%% Plot cluster on 2-dimensional space
+method = 'tsne';        % set method as 'pca' or 'tsne'
+latent = plot_cluster(W,cluster_label,No_cluster,method,resfolder);
+
+
+
+%% Identification of marker genes and plots gene-cell heatmap of topn markers
+topn = 5;
+Gene_idx = GC_htmp_DE(data,allgenes,cluster_label,topn,resfolder);
+
+%% Plot gene expression on the low-dimensional projection of cells
+% Marker = {'VIL1','KRT20','CDH1','ENG','SPARC','COL14A1', 'CD38', 'MZB1', 'DERL3', 'TRBC2', 'CD3D', 'CD3E', 'CD3G', 'ITGAX', 'CD68', 'KIT', 'TPSB2'};
+% Marker = {'SPARC','COL14A1', 'DCN'};
+%%% Bottom crypt %%%
+% Marker = {'ASCL2', 'LGR5', 'METTL3', 'STMN1', 'EZH2', 'DNMT3A', 'RNF43'};
+
+%%% Enterocyte %%%
+Marker = {'GUCA2B', 'CA1', 'SLC26A3'};
+plot_marker(data,Marker,allgenes,latent,resfolder)
+
+
 % %% Violin plot of marker genes along clusters
 % plot_marker_violin(data,allgenes,Marker,cluster_label,No_cluster,resfolder)
 % 
@@ -95,6 +101,6 @@ No_features = 3000;
 % %% Plot marker gene on the lineage tree
 % 
 % plot_lineage_marker(data,Lineage,allgenes,No_cluster,cluster_label,Marker,resfolder)
-
+% 
 
 
