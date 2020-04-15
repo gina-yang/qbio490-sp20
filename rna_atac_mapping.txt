@@ -1,0 +1,30 @@
+atac c1 and rna c1 GOOD
+atac c3 and rna c4, c6 GOOD (combine rna c4 and c6 and map to atac c3)
+atac c6 and c5 and rna c5 
+
+RNA c5 = STEM CELL-LIKE CLUSTER
+- Map atac cluster 6 to that
+- Maybe also atac cluster 5 to that? transcription factors "Fstl1" "Postn"
+
+
+atac missing c2, c4
+rna missing c2, c3
+
+Wnt signaling
+CXCL14
+
+Bmp signaling
+
+
+Run with target genes in runexample
+
+
+
+atac: no Wnt3, rep w/ Wnt7b
+atac: missing Mmp7, Dkk1, deleted both
+
+
+
+Reduce threshold
+color clusters the same
+more noise = more edges

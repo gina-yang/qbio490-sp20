@@ -27,7 +27,7 @@ addpath('Signaling');
 addpath('vinlinplot');
 addpath('Results')
 
-Data_all = importdata('Li_CRC.txt');
+Data_all = importdata('GSE111113_clean.csv');
 data_matrix = Data_all.data;
 allgenes = Data_all.textdata(2:end,1);
 
@@ -35,9 +35,13 @@ allgenes = Data_all.textdata(2:end,1);
 %% Log normalization
 data = log10(data_matrix +1);
 
+% %%
+% data_small = data(:,1:1200);
+% data = data_small;
+
 %% Step 1: Run SoptSC to identify clusters and subpopulation composition
-resfolder = 'Results/20200228';     % all results are saved here
-NC = [8];    % NC is the number of clusters: can be specified by user, or
+resfolder = 'Results/GSE111113_clean';     % all results are saved here
+NC = [];    % NC is the number of clusters: can be specified by user, or
             % if not given (NC = []), it will be inferred
 No_cells = size(data,2);
 No_exc_cell = 0.03*No_cells;
@@ -61,7 +65,7 @@ latent = plot_cluster(W,cluster_label,No_cluster,method,resfolder);
 
 
 %% Identification of marker genes and plots gene-cell heatmap of topn markers
-topn = 5;
+topn = 100;
 Gene_idx = GC_htmp_DE(data,allgenes,cluster_label,topn,resfolder);
 
 %% Plot gene expression on the low-dimensional projection of cells

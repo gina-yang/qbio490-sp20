@@ -30,7 +30,7 @@ Target = {{'MYC','SMAD6','BMP5','MMP3','IL11','SMAD2'},...
 % Set the threshold such that the probability between cells or clusters
 % less than the value of threshold is set to be zero. 
 % Save the result figurs in folder Results\Signaling
-threshold = 0.1;
+threshold = 0.05;
 
 plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,sigfolder)
 
@@ -97,7 +97,7 @@ Target = {{'CREBBP','FOS','ID1','JUN','RUNX1','SMAD1','SMAD5','CDH1'}, ...
 
 
 %%
-threshold = 0.013493;
+threshold = 0.05;
 
 plot_sig_network(Pidv,Pall,cluster_label,Lig,Rec,threshold,sigfolder)
 
