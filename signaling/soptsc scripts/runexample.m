@@ -27,7 +27,7 @@ addpath('Signaling');
 addpath('vinlinplot');
 addpath('Results')
 
-Data_all = importdata('GSE111113_clean.csv');
+Data_all = importdata('Li_CRC.csv');
 data_matrix = Data_all.data;
 allgenes = Data_all.textdata(2:end,1);
 
@@ -40,7 +40,7 @@ data = log10(data_matrix +1);
 % data = data_small;
 
 %% Step 1: Run SoptSC to identify clusters and subpopulation composition
-resfolder = 'Results/GSE111113_clean';     % all results are saved here
+resfolder = 'Results/Li_CRC';     % all results are saved here
 NC = [];    % NC is the number of clusters: can be specified by user, or
             % if not given (NC = []), it will be inferred
 No_cells = size(data,2);
